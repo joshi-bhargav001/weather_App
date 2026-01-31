@@ -1,5 +1,11 @@
 import React, { useState } from 'react'
 import { FcSearch } from "react-icons/fc";
+import cloude from '../images/cloude.jpg'
+import clear from '../images/clear.jpg'
+import mist from '../images/mist.png'
+import rain from '../images/rain.jpg'
+import smoke from '../images/smoke.png'
+// import error from '../images/error.jpg'
 
 function Myapp() {
 
@@ -21,29 +27,42 @@ function Myapp() {
         if(search == "") {
           alert('Enter the city name');
         }
+        setSearch('')
       }
 
   return (
     <>
-      <div className='component flex flex-con item-center justify-center  pt-6 bg-gray-400'>
+    <div className="min-h-screen bg-black flex justify-center pt-10"> 
+      <div className='w-[320px] bg-white rounded-2xl shadow-xl p-6 mb-2'>
+            <h1 className="text-3xl font-bold text-blue-500 mb-2"> Weather App </h1>
 
-        <div className='gap-2 input flex item-center'>
-          <input className='px-2 py-1 border border-gray-400 rounded-md outline-none focus:ring-2 focus:ring-blue-400' type="text" onChange={input_handle} placeholder='Enter City, Country' />
+        <div className='flex items-center bg-sky-100 rounded-full px-4 py-2'>
+          <input className='bg-transparent outline-none flex-1 text-sm' value={search} type="text" onChange={input_handle} placeholder='Enter City, Country' />
           <button onClick={myfun}>
             <FcSearch  className="text-gray-600 cursor-pointer" />
             </button>
         </div> 
+
         <div className=''>
           {
             data && data.weather ?
             <div className='my-4 '>
-              <h2>{data.name}</h2>
-              <h2>{Math.trunc(data.main.temp)}°C</h2>
-              <p>{data.weather[0].description}</p>
+              <h2 className="text-center text-lg font-semibold mt-4">{data.name}</h2>
+              <div className="mt-3 mb-3">
+                <img src={data.weather[0].main == "Clouds" ? cloude : ""} />
+                <img src={data.weather[0].main == "Rain" ? rain : ""} />
+                <img src={data.weather[0].main == "Clear" ? clear : ""} />
+                <img src={data.weather[0].main == "Mist" ? mist : ""} />
+                <img src={data.weather[0].main == "Haze" ? cloude : ""} />
+                <img src={data.weather[0].main == "Smoke" ? smoke : ""} />
+              </div>
+              <h2 className="text-center text-3xl font-bold">{Math.trunc(data.main.temp)}°C</h2>
+              <p  className="text-center text-gray-500 capitalize mt-1">{data.weather[0].description}</p>
             </div> : ""
           }
         </div>
 
+      </div>
       </div>
     </>
   )
