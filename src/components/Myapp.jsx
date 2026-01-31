@@ -39,7 +39,7 @@ function Myapp() {
   return (
     <>
     <div className="min-h-screen bg-blue-300 flex justify-center pt-10"> 
-      <div className='w-[320px] h-[550px] bg-blue-200 rounded-2xl shadow-xl p-6 mb-2'>
+      <div className='w-[320px] h-[580px] bg-blue-200 rounded-2xl shadow-xl p-6 mb-2'>
             <h1 className="text-3xl font-bold text-blue-500 mb-2 pb-1"> Weather App </h1>
 
         <div className='flex items-center bg-sky-100 rounded-full px-4 py-2'>
